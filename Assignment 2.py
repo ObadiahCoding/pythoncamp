@@ -79,7 +79,7 @@ print(is_vowel())
 
 
 #Question 2
-
+# I seem confused about this question.
 score = float(input("enter your score: "))
 def numericalScore():
     if 80 <= score<= 100:
