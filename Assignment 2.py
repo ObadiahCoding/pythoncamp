@@ -79,9 +79,8 @@ print(is_vowel())
 
 
 #Question 2
-# I seem confused about this question.
 score = float(input("enter your score: "))
-def numericalScore():
+def numericalScore(score):
     if 80 <= score<= 100:
         grade = "A"
         grade_point = 4.0
@@ -113,9 +112,9 @@ def numericalScore():
         grade = "N/A"
         grade_point = 0.0
     return grade, grade_point
-print(numericalScore())
+print(numericalScore(score))
 GPA = float(input("enter your GPA: "))
-def cummulativeGPA():
+def cummulativeGPA(GPA):
     if 3.85<=GPA<=4.0:
         honors = "Summa Cum Laude"
     elif 3.70<=GPA<3.85:
@@ -127,6 +126,34 @@ def cummulativeGPA():
     else:
         honors = "N/A"
     return honors
-print(cummulativeGPA())
+print(cummulativeGPA(GPA))
+def enterGrades():
+    num_courses = int(input("Enter the number of courses: "))
     
+    grade_counts = {"A": 0, "B+": 0, "B": 0, "C+": 0, "C": 0, "D+": 0, "D": 0, "E": 0, "F": 0}
+    total_grade_points = 0
+
+    for i in range(num_courses):
+        score = float(input("Enter the numerical score for course {}: ".format(i+1)))
+        grade, grade_point = numericalScore(score)
+        
+        grade_counts[grade] += 1
+        total_grade_points += grade_point
+        
+        print("Grade for course {}: {}".format(i+1, grade))
+        print("Grade point for course {}: {}".format(i+1, grade_point))
+        print()
+    
+    print("Number of each letter grade received:")
+    for grade, count in grade_counts.items():
+        print("{}: {}".format(grade, count))
+    
+    cumulative_GPA = total_grade_points / num_courses
+    print("Cumulative GPA: {:.2f}".format(cumulative_GPA))
+    
+    honors = cummulativeGPA(cumulative_GPA)
+    print("Honors: {}".format(honors))
+enterGrades()
+    
+      
     
